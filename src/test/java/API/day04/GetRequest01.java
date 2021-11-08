@@ -1,0 +1,21 @@
+package API.day04;
+
+public class GetRequest01 {
+
+/*
+    https://restful-booker.herokuapp.com/booking/3 adresine bir request gonderildiginde dönecek cevap (response) icin.
+    HTTP status kodunun 200
+    Content Type'in Json ve Status Line'in HTTP/1.1 200 OK
+    Oldugunu test edin.
+*/
+
+/*
+    1- API testi yaparken ilk olarak URL (Endpoint) belirlenmelidir.
+    2- Beklenen sonuc (Expected Result) olusturulur.
+       Bu case'de benden body dogrulamasi istenmedigi icin simdilik beklenen sonuc olusturmuyoruz.
+    3- Request gönder.
+    4- Actual result olustur.
+*/
+
+
+}
