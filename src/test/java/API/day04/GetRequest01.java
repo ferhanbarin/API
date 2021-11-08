@@ -1,5 +1,9 @@
 package API.day04;
 
+import io.restassured.response.Response;
+import org.junit.Test;
+import static io.restassured.RestAssured.given;
+
 public class GetRequest01 {
 
 /*
@@ -9,13 +13,22 @@ public class GetRequest01 {
     Oldugunu test edin.
 */
 
-/*
-    1- API testi yaparken ilk olarak URL (Endpoint) belirlenmelidir.
-    2- Beklenen sonuc (Expected Result) olusturulur.
-       Bu case'de benden body dogrulamasi istenmedigi icin simdilik beklenen sonuc olusturmuyoruz.
-    3- Request gönder.
-    4- Actual result olustur.
-*/
+    @Test
+    public void test01() {
 
+    // 1- API testi yaparken ilk olarak URL (Endpoint) belirlenmelidir.
 
+        String URL = "https://restful-booker.herokuapp.com/booking/3";
+
+    // 2- Beklenen sonuc (Expected Result) olusturulur.
+    //    Bu case'de benden body dogrulamasi istenmedigi icin simdilik beklenen sonuc olusturmuyoruz.
+    // 3- Request gönder.
+
+        Response response = given().accept("application/json").when().get(URL);
+
+    // 4- Actual result olustur.
+    // 5- Dogrulama yap. (Assertion)
+
+        response.prettyPrint();
+    }
 }
