@@ -26,7 +26,7 @@ public class GetRequest01 {
     //    Bu case'de benden body dogrulamasi istenmedigi icin simdilik beklenen sonuc olusturmuyoruz.
     // 3- Request gönder.
 
-        Response response = given().accept("application/json").when().get(URL);
+        Response response = given().accept(ContentType.JSON).when().get(URL); // accept("application/json") kullanilabilir.
 
         response.prettyPrint();
 
