@@ -1,6 +1,8 @@
 package API.day04;
 
+import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import org.junit.Assert;
 import org.junit.Test;
 import static io.restassured.RestAssured.given;
 
@@ -26,9 +28,26 @@ public class GetRequest01 {
 
         Response response = given().accept("application/json").when().get(URL);
 
+        response.prettyPrint();
+
     // 4- Actual result olustur.
+    //    Response body ile ilgili islem yapmayacagimiz icin simdilik olusturmayacagiz.
     // 5- Dogrulama yap. (Assertion)
 
-        response.prettyPrint();
+        System.out.println("Status code : " + response.getStatusCode()); // Response'den gelen status code verir.
+        System.out.println("Content type : " + response.getContentType()); // Response'den gelen content type verir.
+        System.out.println("Status line : " + response.getStatusLine()); // Response'den gelen status line verir.
+
+        System.out.println("response.getHeaders() = " + response.getHeaders());
+    /*
+        Assert.assertEquals(200, response.getStatusCode());
+        // Expected kismi bize tast olarak verilen degerdir, actual kismi ise response'dan dönen degerdir.
+        // Status code int deger döndürür.
+
+        Assert.assertEquals("application/json; charset=utf-8", response.getContentType());
+        Assert.assertEquals("HTTP/1.1 200 OK", response.getStatusLine());
+    */
+
+        response.then().assertThat().statusCode(200).contentType(ContentType.JSON).statusLine("HTTP/1.1 200 OK");
     }
 }
