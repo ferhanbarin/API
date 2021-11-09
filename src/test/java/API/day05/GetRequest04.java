@@ -1,0 +1,34 @@
+package API.day05;
+
+import io.restassured.response.Response;
+import org.junit.Test;
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
+
+public class GetRequest04 {
+
+/*
+    https://restful-booker.herokuapp.com/booking/5 URL'ine
+    Accept type'i "application/json" olan GET request'i yolladigimda
+    Gelen response'un status kodunun 200
+    Content type'inin "application/json"
+    firstname'in “Jim"
+    totalprice’in 600
+    checkin date'in 2015-06-12"oldugunu test edin.
+*/
+
+    @Test
+    public void test() {
+
+        String URL = "https://restful-booker.herokuapp.com/booking/5";
+
+        Response response = given().accept("application/json").when().get(URL);
+
+        response.prettyPrint();
+
+        response.then().assertThat().statusCode(200).contentType("application/json")
+                .body("firstname", equalTo("Mary"),
+                        "totalprice", equalTo(662),
+                        "bookingdates.checkin", equalTo("2020-04-10"));
+    }
+}
