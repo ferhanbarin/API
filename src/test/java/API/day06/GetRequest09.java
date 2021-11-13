@@ -38,7 +38,5 @@ public class GetRequest09 extends Dummy {
         Assert.assertEquals(24, jsonPath.getList("data.id").size());
         Assert.assertEquals("Airi Satou", jsonPath.getString("data[4].employee_name"));
         Assert.assertEquals(37200, jsonPath.getInt("data[5].employee_salary"));
-
-
     }
 }
