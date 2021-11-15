@@ -5,8 +5,6 @@ import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.junit.Assert;
 import org.junit.Test;
-
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import static io.restassured.RestAssured.given;
