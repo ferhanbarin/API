@@ -6,6 +6,9 @@ import io.restassured.response.Response;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static io.restassured.RestAssured.given;
 
 public class GetRequest09 extends Dummy {
@@ -38,5 +41,14 @@ public class GetRequest09 extends Dummy {
         Assert.assertEquals(24, jsonPath.getList("data.id").size());
         Assert.assertEquals("Airi Satou", jsonPath.getString("data[4].employee_name"));
         Assert.assertEquals(37200, jsonPath.getInt("data[5].employee_salary"));
+
+        Assert.assertTrue(jsonPath.getList("data.employee_name").contains("Rhona Davidson"));
+
+        List<Integer> arananYaslar = Arrays.asList(21,23,61);
+        arananYaslar.add(21);
+        arananYaslar.add(23);
+        arananYaslar.add(61);
+
+        Assert.assertTrue(jsonPath.getList("data.employee_age").containsAll(arananYaslar));
     }
 }
