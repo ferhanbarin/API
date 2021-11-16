@@ -40,9 +40,5 @@ public class GetRequest13 extends Dummy {
         Response response = given().accept("application/json").spec(spec03).when().get("/{parametre1}");
 
         response.prettyPrint();
-
-
-
-
     }
 }
