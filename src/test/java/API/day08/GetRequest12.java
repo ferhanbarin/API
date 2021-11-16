@@ -2,6 +2,7 @@ package API.day08;
 
 import API.TestBase.HerokuApp;
 import API.testData.HerokuAppTestData;
+import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.junit.Assert;
 import org.junit.Test;
@@ -40,7 +41,7 @@ public class GetRequest12 extends HerokuApp {
         response.prettyPrint();
 
 
-        // DE - Serialization
+        // DESerialization
         HashMap <String, Object> actualDataMap = response.as(HashMap.class);
         System.out.println(actualDataMap);
 
@@ -54,6 +55,23 @@ public class GetRequest12 extends HerokuApp {
 
         Assert.assertEquals( ((Map)expectedDataMap.get("bookingdates")).get("checkout"),
                              ((Map)actualDataMap.get("bookingdates")).get("checkout"));
+
+
+        // 2. YOL
+
+        JsonPath jsonPath = response.jsonPath();
+
+        Assert.assertEquals(expectedDataMap.get("firstname"), jsonPath.getString("firstname"));
+        Assert.assertEquals(expectedDataMap.get("lastname"), jsonPath.getString("lastname"));
+        Assert.assertEquals(expectedDataMap.get("totalprice"), jsonPath.getInt("totalprice"));
+        Assert.assertEquals(expectedDataMap.get("depositpaid"), jsonPath.getBoolean("depositpaid"));
+
+        Assert.assertEquals( ((Map)expectedDataMap.get("bookingdates")).get("checkin"), jsonPath.getString("bookingdates.checkin")); //JSON Path ile childlara nokta ile inilebilir.
+        Assert.assertEquals( ((Map)expectedDataMap.get("bookingdates")).get("checkout"), jsonPath.getString("bookingdates.checkout"));
+
+
+
+
 
     }
 }
