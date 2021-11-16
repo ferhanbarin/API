@@ -1,6 +1,15 @@
 package API.day08;
 
-public class GetRequest13 {
+import API.TestBase.Dummy;
+import API.testData.DummyTestData;
+import io.restassured.response.Response;
+import org.junit.Test;
+
+import java.util.HashMap;
+
+import static io.restassured.RestAssured.given;
+
+public class GetRequest13 extends Dummy {
 
 /*
     http://dummy.restapiexample.com/api/v1/employees URL'ine bir istek gönderildiginde
@@ -18,7 +27,22 @@ public class GetRequest13 {
     } gibi oldugunu test edin.
 */
 
+    @Test
+    public void test() {
+
+        spec03.pathParam("parametre1", "employees");
+
+        DummyTestData expectedObje = new DummyTestData();
+        HashMap <String, Object> expectedDataMap = expectedObje.setUpTestData();
+
+        System.out.println(expectedDataMap);
+
+        Response response = given().accept("application/json").spec(spec03).when().get("/{parametre1}");
+
+        response.prettyPrint();
 
 
 
+
+    }
 }
