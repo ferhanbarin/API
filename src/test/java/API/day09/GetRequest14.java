@@ -4,7 +4,6 @@ import API.TestBase.Dummy;
 import API.testData.DummyTestData;
 import io.restassured.response.Response;
 import org.junit.Test;
-
 import java.util.HashMap;
 
 import static io.restassured.RestAssured.given;
@@ -30,5 +29,7 @@ public class GetRequest14 extends Dummy {
         System.out.println(expectedDataMap);
 
         Response response = given().accept("application/json").spec(spec03).when().get("/{parametre1}");
+
+        response.prettyPrint();
     }
 }
