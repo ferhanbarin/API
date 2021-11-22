@@ -2,6 +2,7 @@ package API.day10;
 
 import API.TestBase.Dummy;
 import API.testData.DummyTestData;
+import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.junit.Assert;
 import org.junit.Test;
@@ -50,13 +51,11 @@ public class PostRequest01 extends Dummy {
         Assert.assertEquals(expectedDataMap.get("status"), actualDataMap.get("status"));
         Assert.assertEquals(expectedDataMap.get("message"), actualDataMap.get("message"));
 
+        // JsonPath
 
+        JsonPath json = response.jsonPath();
 
-
-
-
-
-
-
+        Assert.assertEquals(expectedDataMap.get("status"), json.getString("status"));
+        Assert.assertEquals(expectedDataMap.get("message"), json.getString("message"));
     }
 }
