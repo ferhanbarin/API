@@ -41,6 +41,6 @@ public class GetRequest13JSONPath extends Dummy {
         Assert.assertEquals(((Map<?, ?>) expectedDataMap.get("onbirinciCalisan")).get("employee_name"), json.getString("data.employee_name"));
         Assert.assertEquals(((Map<?, ?>) expectedDataMap.get("onbirinciCalisan")).get("employee_salary"), json.getInt("data[10].employee_salary"));
         Assert.assertEquals(((Map<?, ?>) expectedDataMap.get("onbirinciCalisan")).get("employee_age"), json.getInt("data[10].employee_age"));
-        Assert.assertEquals(((Map<?, ?>) expectedDataMap.get("onbirinciCalisan")).get("profile_image"), json.getInt("data[10].profile_image"));
+        Assert.assertEquals(((Map<?, ?>) expectedDataMap.get("onbirinciCalisan")).get("profile_image"), json.getString("data[10].profile_image"));
     }
 }
