@@ -1,5 +1,7 @@
 package API.testData;
 
+import org.json.JSONObject;
+
 import java.util.HashMap;
 
 public class HerokuAppTestData {
@@ -20,5 +22,22 @@ public class HerokuAppTestData {
         expectedData.put("bookingdates", bookingdates);
 
         return expectedData;
+    }
+
+
+    public JSONObject setUpTestAndRequestData() {
+
+        JSONObject bookingdates = new JSONObject();
+        bookingdates.put("checkin", "2020-09-09");
+        bookingdates.put("checkout", "2020-09-21");
+
+        JSONObject expectedRequest = new JSONObject();
+        expectedRequest.put("firstname", "Ferhan");
+        expectedRequest.put("lastname", "Oguz");
+        expectedRequest.put("totalprice", 123);
+        expectedRequest.put("depositpaid", false);
+        expectedRequest.put("bookingdates", bookingdates);
+
+        return expectedRequest;
     }
 }
