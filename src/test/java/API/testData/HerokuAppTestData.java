@@ -28,8 +28,8 @@ public class HerokuAppTestData {
     public JSONObject setUpTestAndRequestData() {
 
         JSONObject bookingdates = new JSONObject();
-        bookingdates.put("checkin", "2020-09-09");
-        bookingdates.put("checkout", "2020-09-21");
+        bookingdates.put("checkin", "2021-01-05");
+        bookingdates.put("checkout", "2021-01-10");
 
         JSONObject expectedRequest = new JSONObject();
         expectedRequest.put("firstname", "Ferhan");
