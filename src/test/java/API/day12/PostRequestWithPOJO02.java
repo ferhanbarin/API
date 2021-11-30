@@ -49,7 +49,7 @@ public class PostRequestWithPOJO02 extends HerokuApp {
         BookingDatesPOJO bookingdates = new BookingDatesPOJO("2020-09-09", "2020-09-21");
         BookingPOJO bookingPojo = new BookingPOJO("Selim", "Ak", 15000, true, bookingdates);
 
-        Response response = given().contentType(ContentType.JSON).spec(spec02).auth().basic("admin", "password123").body(bookingPojo).post("/{parametre}");
+        Response response = given().contentType(ContentType.JSON).spec(spec02).auth().basic("admin", "password123").body(bookingPojo).when().post("/{parametre1}");
         response.prettyPrint();
 
         BookingResponsePOJO actualData = response.as(BookingResponsePOJO.class);
