@@ -3,8 +3,10 @@ package API.day13;
 import API.POJOS.Data;
 import API.POJOS.DummyPOJO;
 import API.TestBase.Dummy;
+import com.google.gson.Gson;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import org.junit.Assert;
 import org.junit.Test;
 import static io.restassured.RestAssured.given;
 
@@ -41,12 +43,22 @@ public class GetRequestWithPOJO01 extends Dummy {
         DummyPOJO actualData = response.as(DummyPOJO.class);
         System.out.println(actualData);
 
+        Assert.assertEquals(200, response.getStatusCode());
+        Assert.assertEquals(expectedData.getStatus(), actualData.getStatus());
+        Assert.assertEquals(expectedData.getData().getemployee_name(), actualData.getData().getemployee_name());
+        Assert.assertEquals(expectedData.getData().getId(), actualData.getData().getId());
+        Assert.assertEquals(expectedData.getData().getemployee_age(), actualData.getData().getemployee_age());
+        Assert.assertEquals(expectedData.getData().getemployee_salary(), actualData.getData().getemployee_salary());
+        Assert.assertEquals(expectedData.getData().getprofile_image(), actualData.getData().getprofile_image());
+        Assert.assertEquals(expectedData.getMessage(), actualData.getMessage());
 
 
 
+        // Serialization ---> JAVA objesini JSON'a cevirme islemine denir.
 
-
-
+        // Gson sinifindan bir obje üretilir.
+        Gson gson = new Gson();
+        String jsonFromJava = gson.toJson(actualData);
+        System.out.println(jsonFromJava);
     }
-
 }
