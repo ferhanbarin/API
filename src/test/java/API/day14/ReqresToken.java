@@ -8,7 +8,7 @@ import static io.restassured.RestAssured.given;
 
 public class ReqresToken {
 
-    public void tokenAl() {
+    public String tokenAl() {
 
         String URL = "https://reqres.in/api/login";
 
@@ -25,9 +25,6 @@ public class ReqresToken {
         String token = json.getString("token");
         System.out.println(token);
 
-
-
-
-
+        return token;
     }
 }
