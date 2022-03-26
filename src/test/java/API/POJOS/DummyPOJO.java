@@ -50,6 +50,7 @@ public class DummyPOJO {
         this.message = message;
     }
 
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
